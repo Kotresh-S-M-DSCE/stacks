@@ -12,46 +12,34 @@ class Solution {
             {
                 switch(s.charAt(i))
                 {
-                    case ')' : if(top==-1)
+                    case ')' : if(top==-1||stack[top]!='(')
                                {
                                  return false;
                                }
-                               if(stack[top]=='(')
-                               {
-                                  top--;
-                                  break;
-                               }
-                               return false;
-                    case ']' : if(top==-1)
+                               top--;
+                               break;
+                    case ']' : if(top==-1||stack[top]!='[')
                                {
                                  return false;
                                }
-                               if(stack[top]=='[')
-                               {
-                                  top--;
-                                  break;
-                               }
-                               return false;
-                    case '}' : if(top==-1)
+                               top--;
+                               break;
+                    case '}' : if(top==-1||stack[top]!='{')
                                {
                                  return false;
                                }
-                               if(stack[top]=='{')
-                               {
-                                  top--;
-                                  break;
-                               }
-                               return false;
+                               top--;
+                               break;
                 }
             }
         }
-        if(top!=-1)
+        if(top==-1)
         {
-            return false;
+            return true;
         }
         else
         {
-            return true;
+            return false;
         }
     }
 }
